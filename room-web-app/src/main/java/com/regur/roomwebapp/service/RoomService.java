@@ -1,21 +1,23 @@
 package com.regur.roomwebapp.service;
 
+import com.regur.roomwebapp.data.RoomRepository;
 import com.regur.roomwebapp.model.Room;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RoomService {
-  private static final List<Room> rooms = new ArrayList<>();
+  private final RoomRepository roomRepository;
 
-  static {
-    for (int i = 0; i < 10; i++) {
-      rooms.add(new Room(i, "Room "+i, "R"+i, "Q" ));
-    }
+  public RoomService(RoomRepository roomRepository) {
+    this.roomRepository = roomRepository;
   }
 
   public List<Room> getAllRooms(){
-    return rooms;
+    return roomRepository.findAll();
+  }
+
+  public Room findById(long id) {
+    return roomRepository.findById(id).get();
   }
 }

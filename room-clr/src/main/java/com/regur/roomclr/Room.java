@@ -1,24 +1,9 @@
-package com.regur.roomwebapp.model;
+package com.regur.roomclr;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "ROOM")
 public class Room {
-  @Id
-  @Column(name = "ROOM_ID")
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
-  @Column(name = "ROOM_NUMBER")
   private String number;
-  @Column(name = "NAME")
   private String name;
-  @Column(name = "BED_INFO")
   private String info;
 
   public Room() {
@@ -61,5 +46,15 @@ public class Room {
 
   public void setInfo(String info) {
     this.info = info;
+  }
+
+  @Override
+  public String toString() {
+    return "Room{" +
+        "id=" + id +
+        ", number='" + number + '\'' +
+        ", name='" + name + '\'' +
+        ", info='" + info + '\'' +
+        '}';
   }
 }
